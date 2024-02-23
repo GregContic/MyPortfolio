@@ -47,6 +47,38 @@
  * ------------------------------------------------------------------- 
  */
 
+ .btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: 2px;
+  }
+  .contact-details {
+    font-size: 2.4rem;
+    transition: transform 0.3s ease-out;
+
+  }
+ 
+ .contact-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 80vh;
+	font-family: "poppins-semibold", sans-serif;
+  }
+  .contact-section-header > h2 {
+    font-size: 6rem;
+  }
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 980px;
+    margin-top: 4rem;
+    flex-wrap: wrap;
+  }
 
 html {
 	font-size: 10px;
@@ -1226,9 +1258,7 @@ header .logo a {
 	font-family: "poppins-medium", sans-serif;
 	font-size: 1.5rem;
 }
-.smoothscroll{
-	text-align: right;
-}
+
 /* dropdown nav */
 .main-navigation {
 	background: #000000;
@@ -1493,8 +1523,8 @@ header .logo a {
  */
 #about {
 	background: #FFFFFF;
-	padding-top: 12rem;
-	padding-bottom: 15rem;
+	padding-top: 5rem;
+	padding-bottom: 5rem;
 }
 #about .section-intro {
 	margin-bottom: 3rem;
@@ -1793,8 +1823,8 @@ header .logo a {
  */
 #portfolio {
 	background: #FFFFFF;
-	padding-top: 12rem;
-	padding-bottom: 12rem;
+	padding-top: 5rem;
+	padding-bottom: 5rem;
 }
 #portfolio .folio-item {
 	padding: 0;
@@ -2252,7 +2282,7 @@ header .logo a {
  * ------------------------------------------------------------------- 
  */
 #contact {
-	background: #151515;
+	background: #ffffff;
 	padding-top: 12rem;
 	padding-bottom: 7.2rem;
 }
@@ -2266,169 +2296,8 @@ header .logo a {
 	color: rgba(255, 255, 255, 0.7);
 }
 
-/* contact form */
-.contact-form {
-	max-width: 740px;
-}
 
-.contact-form ::-webkit-input-placeholder {
-	color: rgba(255, 255, 255, 0.3);
-}
-.contact-form :-moz-placeholder {
-	color: rgba(255, 255, 255, 0.3);  /* Firefox 18- */
-}
-.contact-form ::-moz-placeholder {
-	color: rgba(255, 255, 255, 0.3);  /* Firefox 19+ */
-}
-.contact-form :-ms-input-placeholder {
-	color: rgba(255, 255, 255, 0.3);
-}
-.contact-form .placeholder {
-	color: rgba(255, 255, 255, 0.3) !important;
-}
 
-#contact form {
-	margin-top: 0;
-	margin-bottom: 3rem;
-}
-#contact form .form-field {
-	position: relative;
-}
-#contact form .form-field:before, #contact form .form-field:after {
-	content: "";
-	display: table;
-}
-#contact form .form-field:after {
-	clear: both;
-}
-#contact form .form-field label {
-	font-family: "poppins-bold", sans-serif;
-	font-size: 1.1rem;
-	line-height: 2.4rem;
-	position: absolute;
-	bottom: -1.2rem;
-	right: .6rem;
-	text-transform: uppercase;
-	letter-spacing: .1rem;
-	padding: 0 2rem;
-	margin: 0;
-	color: #FFFFFF;
-	background: #b700ff;
-}
-#contact form .form-field label::after {
-	position: absolute;
-	left: -5px;
-	top: 50%;
-	margin-top: -6px;
-	border-top: 5px solid transparent;
-	border-bottom: 5px solid transparent;
-	border-right: 5px solid #b700ff;
-	content: "";
-}
-#contact input[type="text"],
-#contact input[type="password"],
-#contact input[type="email"],
-#contact textarea {
-	width: 100%;
-	color: rgba(255, 255, 255, 0.7);
-	margin-bottom: 0;
-	border: none;
-	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-#contact input[type="text"],
-#contact input[type="password"],
-#contact input[type="email"] {
-	height: 6.6rem;
-	padding: 1.8rem 2rem;
-}
-#contact input[type="text"]:focus,
-#contact input[type="password"]:focus,
-#contact input[type="email"]:focus {
-	border-color: #b700ff;
-	color: #FFFFFF;
-}
-#contact textarea {
-	min-height: 20rem;
-	padding: 1.8rem 2rem;
-}
-#contact textarea:focus {
-	border-color: #b700ff;
-	color: #FFFFFF;
-}
-#contact button.submitform {
-	font-size: 1.5rem;
-	display: block;
-	letter-spacing: .2rem;
-	height: 6.6rem;
-	line-height: 6.6rem;
-	padding: 0 3rem;
-	margin-top: 4.8rem;
-	width: 100%;
-	background: #b700ff;
-	color: #FFFFFF;
-}
-#contact button.submitform:hover, #contact button.submitform:focus {
-	background: #b700ff;
-}
-#message-warning, #message-success {
-	display: none;
-	background: #0d0d0d;
-	border-radius: 3px;
-	padding: 3rem;
-	margin-bottom: 3.6rem;
-	width: 100%;
-}
-#message-warning {
-	color: #fa0003;
-}
-#message-success {
-	color: #b700ff;
-}
-#message-warning i, #message-success i {
-	margin-right: 10px;
-}
-
-/* form loader */
-#submit-loader {
-	display: none;
-	position: relative;
-	left: 0;
-	top: 1.8rem;
-	width: 100%;
-	text-align: center;
-}
-#submit-loader .text-loader {
-	display: none;
-	font-family: "poppins-bold", sans-serif;
-	color: #FFFFFF;
-	letter-spacing: .3rem;
-	text-transform: uppercase;
-}
-.oldie #submit-loader .s-loader {
-	display: none;
-}
-.oldie #submit-loader .text-loader {
-	display: block;
-}
-.contact-info {
-	margin: 4.8rem auto 0;
-	font-family: "poppins-regular", sans-serif;
-	font-size: 1.5rem;
-	text-align: center;
-}
-.contact-info .collapse {
-	padding: 0;
-}
-.contact-info .icon {
-	margin-bottom: 2.1rem;
-}
-.contact-info .icon i {
-	font-size: 4.2rem;
-	color: #FFFFFF;
-}
-.contact-info h5 {
-	color: #b700ff;
-}
 
 /**
  * loader animation - (_layout.scss)
