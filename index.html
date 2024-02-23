@@ -35,26 +35,18 @@
 	<!-- header 
    ================================================== -->
    <header>   	
-   	<div class="row">
+	
+	<div id="topone">
+		<nav>
+			<ul class="main-navigation">
+				<li><a class="smoothscroll"  href="#intro" title="">Home</a></li>
+				<li><a class="smoothscroll"  href="#about" title="">About</a></li>
+				<li><a class="smoothscroll"  href="#portfolio" title="">Portfolio</a></li>		
+			</ul>
+		</nav>
+	</div>
+	   
 
-   		<div class="top-bar">
-   			<a class="menu-toggle" href="#"><span>Menu</span></a>
-
-	   		<div class="logo">
-		         <a href="index.html">Portfolio</a>
-		      </div>		      
-
-		   	<nav id="main-nav-wrap">
-					<ul class="main-navigation">
-						<li class="current"><a class="smoothscroll"  href="#intro" title="">Home</a></li>
-						<li><a class="smoothscroll"  href="#about" title="">About</a></li>
-						<li><a class="smoothscroll"  href="#portfolio" title="">Portfolio</a></li>
-						<li><a href="resume/My First Webpage(not rly).html" title="">Resume</a></li>				
-					</ul>
-				</nav>    		
-   		</div> <!-- /top-bar --> 
-   		
-   	</div> <!-- /row --> 		
    </header> <!-- /header -->
 
 	<!-- intro section
@@ -134,30 +126,29 @@
    		<div class="col-six tab-full">
 
    			<h3>Skills</h3>
-   			<p>I've got no skillz. I obviously did not make this on my own. I only downloaded it from the internet
-				and edited it. But I still worked hard to edit this and spent hours doing so. 
+   			<p>The following skillset percentage is highly inaccurate to the developer's actual programming skills.
 			</p>
 
 				<ul class="skill-bars">
 				   <li>
-				   	<div class="progress percent25"><span>25%</span></div>
+				   	<div class="progress percent50" id="rightm"><span>40%</span></div>
 				   	<strong class="skillx">HTML/CSS</strong>
 				   </li>
 				   <li>
-				   	<div class="progress percent5"><span>5%</span></div>
+				   	<div class="progress percent45"><span>30%</span></div>
 				   	<strong>JAVASCRIPT</strong>
 				   </li>
 				   <li>
-				   	<div class="progress percent20"><span>20%</span></div>
+				   	<div class="progress percent30"><span>28%</span></div>
 				   	<strong>PYTHON</strong>
 				   </li>
 				   <li>
-				   	<div class="progress percent10"><span>10%</span></div>
+				   	<div class="progress percent25"><span>15%</span></div>
 				   	<strong>JAVA</strong>
 				   </li>
 				   <li>
 
-				   	<div class="progress percent10"><span>10%</span></div>
+				   	<div class="progress percent20"><span>10%</span></div>
 				   	<strong>C#</strong>
 				   </li>
       
@@ -196,7 +187,7 @@
 	         	<div class="bgrid folio-item">
 	               <div class="item-wrap">
 	               	<img src="images/portfolio/toilet.png" alt="E-Commerce Product Page">
-	                  <a href="#modal-01" class="overlay">	                  	           
+	                  <a href="https://gregcontic.github.io/e-commerce-page/" class="overlay">	                  	           
 	                     <div class="folio-item-table">
 	                     	<div class="folio-item-cell">
 		     					       <h3 class="folio-title">E-Commerce Product Page</h3>	     					    
@@ -212,7 +203,7 @@
 	        		<div class="bgrid folio-item">
 	               <div class="item-wrap">
 	               	<img src="images/portfolio/tec.png" alt="Technical Documentation Page">
-	               	<a href="#modal-02" class="overlay">              		                  
+	               	<a href="https://gregcontic.github.io/TechDoc/" class="overlay">              		                  
 	                     <div class="folio-item-table">
 	                     	<div class="folio-item-cell">
 	                     		<h3 class="folio-title">Technical Documentation Page</h3>	     					    
@@ -228,7 +219,7 @@
 	            <div class="bgrid folio-item">
 	               <div class="item-wrap">
 	               	<img src="images/portfolio/monk.jpg"alt="Monkey">
-	                  <a href="#modal-03" class="overlay">             		                  
+	                  <a href="https://gregcontic.github.io/TributePage/" class="overlay">             		                  
 	                     <div class="folio-item-table">
 	                     	<div class="folio-item-cell">
 	                     		<h3 class="folio-title">Monkey?</h3>	     					    
@@ -244,7 +235,7 @@
 	            <div class="bgrid folio-item">
 	               <div class="item-wrap">
 	               	<img src="images/portfolio/paper.jpg" alt="Resume">
-	                  <a href="#modal-04" class="overlay">                  	                 
+	                  <a href="resume/My First Webpage(not rly).html" class="overlay">                  	                 
 	                     <div class="folio-item-table">
 	                     	<div class="folio-item-cell">
 	                     		<h3 class="folio-title">Resume</h3>	     					    
@@ -256,92 +247,9 @@
 	                  </a>
 	               </div>
 	        		</div> <!-- /folio-item -->     
+  
 
 
-
-
-
-	            <!-- modal popups - begin
-	            ============================================================= -->
-	            <div id="modal-01" class="popup-modal slider mfp-hide">	
-
-				     	<div class="media">
-				     		<img src="images/portfolio/modals/e-commerce.png" alt="" />
-				     	</div>      	
-
-					   <div class="description-box">
-					      <h4>E-Commerce Product Page</h4>		      
-					      <p>Finest Line of Toilet Paper</p>
-
-					      <div class="categories">Website</div>			               
-					   </div>
-
-			         <div class="link-box">
-			            <a href="https://gregcontic.github.io/e-commerce-page/">Visit</a>
-					      <a href="#" class="popup-modal-dismiss">Close</a>
-			         </div>		      
-
-				   </div> <!-- /modal-01 -->
-
-				   <div id="modal-02" class="popup-modal slider mfp-hide">	
-
-				     	<div class="media">
-				     		<img src="images/portfolio/modals/techdoc.png" alt="" />
-				     	</div>      	
-
-					   <div class="description-box">
-					      <h4>Technical Documentation Page</h4>		      
-					      <p>For your information on basic HTML/CSS.</p>
-
-					      <div class="categories">Website</div>			               
-					   </div>
-
-			         <div class="link-box">
-			            <a href="https://gregcontic.github.io/TechDoc/">Details</a>
-					      <a href="#" class="popup-modal-dismiss">Close</a>
-			         </div>		      
-
-				   </div> <!-- /modal-02 -->
-
-				   <div id="modal-03" class="popup-modal slider mfp-hide">	
-
-				     	<div class="media">
-				     		<img src="images/portfolio/modals/monke.jpg" alt="" />
-				     	</div>      	
-
-					   <div class="description-box">
-					      <h4>Monkey</h4>		      
-					      <p>A tribute page I made last semester.</p>
-
-					      <div class="categories">Web Design</div>			               
-					   </div>
-
-			         <div class="link-box">
-			            <a href="https://gregcontic.github.io/TributePage/">Details</a>
-					      <a href="#" class="popup-modal-dismiss">Close</a>
-			         </div>		      
-
-				   </div> <!-- /modal-03 -->
-
-				   <div id="modal-04" class="popup-modal slider mfp-hide">	
-
-				     	<div class="media">
-				     		<img src="images/portfolio/modals/resume.jpg" alt="" />
-				     	</div>      	
-
-					   <div class="description-box">
-					      <h4>Resume</h4>		      
-					      <p>A website entirely dedicated to a resume</p>
-
-					      <div class="categories">Resume</div>			               
-					   </div>
-
-			         <div class="link-box">
-			            <a href="resume/My First Webpage(not rly).html">Details</a>
-					      <a href="#" class="popup-modal-dismiss">Close</a>
-			         </div>		      
-
-				   </div> <!-- /modal-04 -->
 
 
 

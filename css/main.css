@@ -46,6 +46,8 @@
  *
  * ------------------------------------------------------------------- 
  */
+
+
 html {
 	font-size: 10px;
 }
@@ -285,6 +287,7 @@ ul {
 }
 li {
 	display: list-item;
+	font-family: "poppins-medium", sans-serif;
 }
 ol, ul {
 	margin-left: 1.7rem;
@@ -1090,22 +1093,12 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 header {
 	position: fixed;
 	width: 100%;
-	min-height: 66px;
 	z-index: 600;
 }
 header .row {
 	position: relative;
-	min-height: 66px;
 }
-header .top-bar {
-	display: block;
-	background: #000000;
-	min-width: 220px;
-	min-height: 66px;
-	position: absolute;
-	left: 90px;
-	top: 0;
-}
+
 header .logo {
 	float: left;
 	margin-left: 20px;
@@ -1221,25 +1214,30 @@ header .logo a {
 }
 
 /* navigation panel */
-#main-nav-wrap {
-	display: block;
+#top-one{
+	display: inline;
 	width: 100%;
 	font-family: "poppins-medium", sans-serif;
 	font-size: 1.5rem;
-	position: absolute;
-	top: 100%;
-	left: 0;
 }
-
+#main-nav-wrap {
+	display: inline;
+	width: 100%;
+	font-family: "poppins-medium", sans-serif;
+	font-size: 1.5rem;
+}
+.smoothscroll{
+	text-align: right;
+}
 /* dropdown nav */
 .main-navigation {
 	background: #000000;
-	padding: 24px 30px 42px;
+	padding: 10px 10px 10px;
 	margin: 0;
-	width: 100%;
-	height: auto;
-	clear: both;
-	display: none;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+
 }
 .main-navigation > li {
 	display: block;
@@ -2600,4 +2598,7 @@ footer .copyright span:last-child::after {
 	background: #000000;
 }
 
+#rightm {
+	text-align: right;
+}
 /*# sourceMappingURL=main.css.map */
