@@ -17,9 +17,13 @@
    ================================================== -->
    <link rel="stylesheet" href="css/base.css">  
    <link rel="stylesheet" href="css/main.css">
-   <link rel="stylesheet" href="css/vendor.css">     
-   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+   <link rel="stylesheet" href="css/vendor.css">   
+     
 
+   <!-- script
+   ================================================== -->   
+	<script src="js/modernizr.js"></script>
+	<script src="js/pace.min.js"></script>
 
    <!-- favicons
 	================================================== -->
@@ -32,19 +36,27 @@
 	<!-- header 
    ================================================== -->
    <header>   	
-	
-	<div id="topone">
-		<nav>
-			<ul class="main-navigation">
-				<li><a class="smoothscroll"  href="#intro" title="">Home</a></li>
-				<li><a class="smoothscroll"  href="#about" title="">About</a></li>
-				<li><a class="smoothscroll"  href="#portfolio" title="">Portfolio</a></li>		
-				<li><a class="smoothscroll"  href="#Contacts" title="">Contacts</a></li>	
-			</ul>
-		</nav>
-	</div>
-	   
+   	<div class="row">
 
+   		<div class="top-bar">
+   			<a class="menu-toggle" href="#"><span>Menu</span></a>
+
+	   		<div class="logo">
+		         <a href="index.html">Portfolio</a>
+		      </div>		      
+
+		   	<nav id="main-nav-wrap">
+					<ul class="main-navigation">
+						<li class="current"><a class="smoothscroll"  href="#intro" title="">Home</a></li>
+						<li><a class="smoothscroll"  href="#about" title="">About</a></li>
+						<li><a class="smoothscroll"  href="#portfolio" title="">Portfolio</a></li>
+						<li><a href="resume/My First Webpage(not rly).html" title="">Resume</a></li>				
+					</ul>
+				</nav>    	
+
+   		</div> <!-- /top-bar --> 
+   		
+   	</div> <!-- /row --> 		
    </header> <!-- /header -->
 
 	<!-- intro section
@@ -105,12 +117,12 @@
    					<span>Harry Gregson Contic Denesia</span>
    				</li>
    				<li>
-   					<strong>Unspecific Birth Date:</strong>
-   					<span>November, 21st Century</span>
+   					<strong>Day of Birth:</strong>
+   					<span>November 25</span>
    				</li>
    				<li>
-   					<strong>Job:</strong>
-   					<span>None/Unemployed/Palamunin</span>
+   					<strong>Specialty:</strong>
+   					<span>Web Design & Development</span>
    				</li>
    				<li>
    					<strong>Email:</strong>
@@ -124,29 +136,29 @@
    		<div class="col-six tab-full">
 
    			<h3>Skills</h3>
-   			<p>The following skillset percentage is highly inaccurate to the developer's actual programming skills.
+   			<p>Here is the percentages for all of the programming languages I know...
 			</p>
 
 				<ul class="skill-bars">
 				   <li>
-				   	<div class="progress percent50" id="rightm"><span>40%</span></div>
+				   	<div class="progress percent65" id="rightm"><span>55%</span></div>
 				   	<strong class="skillx">HTML/CSS</strong>
 				   </li>
 				   <li>
-				   	<div class="progress percent45"><span>30%</span></div>
+				   	<div class="progress percent45"><span>45%</span></div>
 				   	<strong>JAVASCRIPT</strong>
 				   </li>
 				   <li>
-				   	<div class="progress percent30"><span>28%</span></div>
+				   	<div class="progress percent30"><span>30%</span></div>
 				   	<strong>PYTHON</strong>
 				   </li>
 				   <li>
-				   	<div class="progress percent25"><span>15%</span></div>
+				   	<div class="progress percent25"><span>25%</span></div>
 				   	<strong>JAVA</strong>
 				   </li>
 				   <li>
 
-				   	<div class="progress percent20"><span>10%</span></div>
+				   	<div class="progress percent20"><span>15%</span></div>
 				   	<strong>C#</strong>
 				   </li>
       
@@ -170,7 +182,7 @@
    			<h5>Portfolio</h5>
    			<h1>Check Out Some of My Works.</h1>
 
-   			<p class="lead">Here are some of the stuff I legitimately made. They're kinda subpar but kinda cool regardless.</p>
+   			<p class="lead">Here are some of the projects I made.</p>
 
    		</div>   		
    	</div> <!-- /section-intro--> 
@@ -185,7 +197,7 @@
 	         	<div class="bgrid folio-item">
 	               <div class="item-wrap">
 	               	<img src="images/portfolio/toilet.png" alt="E-Commerce Product Page">
-	                  <a href="https://gregcontic.github.io/e-commerce-page/" class="overlay">	                  	           
+	                  <a href="#modal-01" class="overlay">	                  	           
 	                     <div class="folio-item-table">
 	                     	<div class="folio-item-cell">
 		     					       <h3 class="folio-title">E-Commerce Product Page</h3>	     					    
@@ -201,7 +213,7 @@
 	        		<div class="bgrid folio-item">
 	               <div class="item-wrap">
 	               	<img src="images/portfolio/tec.png" alt="Technical Documentation Page">
-	               	<a href="https://gregcontic.github.io/TechDoc/" class="overlay">              		                  
+	               	<a href="#modal-02" class="overlay">              		                  
 	                     <div class="folio-item-table">
 	                     	<div class="folio-item-cell">
 	                     		<h3 class="folio-title">Technical Documentation Page</h3>	     					    
@@ -217,10 +229,10 @@
 	            <div class="bgrid folio-item">
 	               <div class="item-wrap">
 	               	<img src="images/portfolio/monk.jpg"alt="Monkey">
-	                  <a href="https://gregcontic.github.io/TributePage/" class="overlay">             		                  
+	                  <a href="#modal-03" class="overlay">             		                  
 	                     <div class="folio-item-table">
 	                     	<div class="folio-item-cell">
-	                     		<h3 class="folio-title">Monkey?</h3>	     					    
+	                     		<h3 class="folio-title">Portfolio #2</h3>	     					    
 		     					    	<span class="folio-types">
 		     					       	  Website
 		     					      </span>		     		
@@ -233,7 +245,7 @@
 	            <div class="bgrid folio-item">
 	               <div class="item-wrap">
 	               	<img src="images/portfolio/paper.jpg" alt="Resume">
-	                  <a href="resume/My First Webpage(not rly).html" class="overlay">                  	                 
+	                  <a href="#modal-04" class="overlay">                  	                 
 	                     <div class="folio-item-table">
 	                     	<div class="folio-item-cell">
 	                     		<h3 class="folio-title">Resume</h3>	     					    
@@ -245,9 +257,92 @@
 	                  </a>
 	               </div>
 	        		</div> <!-- /folio-item -->     
-  
 
 
+
+
+
+	            <!-- modal popups - begin
+	            ============================================================= -->
+	            <div id="modal-01" class="popup-modal slider mfp-hide">	
+
+				     	<div class="media">
+				     		<img src="images/portfolio/modals/e-commerce.png" alt="" />
+				     	</div>      	
+
+					   <div class="description-box">
+					      <h4>E-Commerce Product Page</h4>		      
+					      <p>Finest Line of Toilet Paper</p>
+
+					      <div class="categories">Website</div>			               
+					   </div>
+
+			         <div class="link-box">
+			            <a href="https://gregcontic.github.io/e-commerce-page/">Visit</a>
+					      <a href="#" class="popup-modal-dismiss">Close</a>
+			         </div>		      
+
+				   </div> <!-- /modal-01 -->
+
+				   <div id="modal-02" class="popup-modal slider mfp-hide">	
+
+				     	<div class="media">
+				     		<img src="images/portfolio/modals/techdoc.png" alt="" />
+				     	</div>      	
+
+					   <div class="description-box">
+					      <h4>Technical Documentation Page</h4>		      
+					      <p>For your information on basic HTML/CSS.</p>
+
+					      <div class="categories">Website</div>			               
+					   </div>
+
+			         <div class="link-box">
+			            <a href="https://gregcontic.github.io/TechDoc/">Details</a>
+					      <a href="#" class="popup-modal-dismiss">Close</a>
+			         </div>		      
+
+				   </div> <!-- /modal-02 -->
+
+				   <div id="modal-03" class="popup-modal slider mfp-hide">	
+
+				     	<div class="media">
+				     		<img src="images/portfolio/modals/monke.jpg" alt="" />
+				     	</div>      	
+
+					   <div class="description-box">
+					      <h4>Portfolio</h4>		      
+					      <p>A secondary portfolio of mine.</p>
+
+					      <div class="categories">Web Design</div>			               
+					   </div>
+
+			         <div class="link-box">
+			            <a href="https://gregcontic.github.io/Personal-Portfolio/">Details</a>
+					      <a href="#" class="popup-modal-dismiss">Close</a>
+			         </div>		      
+
+				   </div> <!-- /modal-03 -->
+
+				   <div id="modal-04" class="popup-modal slider mfp-hide">	
+
+				     	<div class="media">
+				     		<img src="images/portfolio/modals/resume.jpg" alt="" />
+				     	</div>      	
+
+					   <div class="description-box">
+					      <h4>Resume</h4>		      
+					      <p>A website entirely dedicated to a resume</p>
+
+					      <div class="categories">Resume</div>			               
+					   </div>
+
+			         <div class="link-box">
+			            <a href="resume/My First Webpage(not rly).html">Details</a>
+					      <a href="#" class="popup-modal-dismiss">Close</a>
+			         </div>		      
+
+				   </div> <!-- /modal-04 -->
 
 
 
@@ -263,28 +358,50 @@
    	</div> <!-- /portfolio-content --> 
 		
 	</section> <!-- /portfolio --> 
-
 	<section id="contact" class="contact-section">
 		<div class="contact-section-header">
-		  <h2 id="Contacts">Come find me...</h2>
+		  <h2 id="Contacts">Here are my contacts:</h2>
 		</div>
 		<div class="contact-links">
-		  <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn contact-details btncolor"><i class="fab fa-facebook-square"></i> Facebook</a>
-		  <a href="https://github.com/GregContic/GregContic.git" target="_blank" class="btn contact-details btncolor"><i class="fab fa-github"></i> GitHub</a>
-		  <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn contact-details btncolor"><i class="fab fa-twitter"></i> Twitter</a>
-		  <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn contact-details btncolor"><i class="fas fa-at"></i> Send a mail</a>
-		  <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn contact-details btncolor"><i class="fas fa-mobile-alt"></i> Call me</a>
+		  <a href="https://www.facebook.com/harry.denesia.1" class="btn contact-details btncolor"><i class="fa fa-facebook"></i> Facebook</a>
+		  <a href="https://github.com/GregContic/GregContic.git" target="_blank" class="btn contact-details btncolor"> <i class="fa fa-github"></i> GitHub</a>
+		  <a href="https://twitter.com/KingJames" class="btn contact-details btncolor"> <i class="fa fa-twitter"></i> Twitter</a>
+		  <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn contact-details btncolor"> <i class="fa fa-phone"></i> Call me</a>
 		</div>
 	  </section>
 
+	
 
 
-<hr>
+	<!-- CTA Section
+   ================================================== -->
+
+	
+	<!-- services Section
+   ================================================== -->
+
+	<!-- stats Section
+   ================================================== -->
+	
+   <!-- contact
+   ================================================== -->
+	
+
+   <!-- footer
+   ================================================== -->
 
    <footer>
      	<div class="row">
 
+     		<div class="col-six tab-full pull-right social">
 
+     			<ul class="footer-social">        
+			      <li><a href="#https://www.facebook.com/harry.denesia.1"><i class="fa fa-facebook"></i></a></li>
+			      <li><a href="#https://twitter.com/kirawontmiss"><i class="fa fa-twitter"></i></a></li>
+			      <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+			   </ul> 
+	      		
+	      </div>
 
       	<div class="col-six tab-full">
 	      	<div class="copyright">
@@ -299,7 +416,15 @@
       	</div> <!-- /row -->     	
    </footer>  
 
+   <div id="preloader"> 
+    	<div id="loader"></div>
+   </div> 
 
+   <!-- Java Script
+   ================================================== --> 
+   <script src="js/jquery-2.1.3.min.js"></script>
+   <script src="js/plugins.js"></script>
+   <script src="js/main.js"></script>
 
 </body>
 
