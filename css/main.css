@@ -2001,6 +2001,13 @@
 	 background: #b700ff;
 	 border: none;
  }
+/* Make the modal "Close" link span the full width */
+.popup-modal .link-box a.popup-modal-dismiss {
+	 float: none;
+	 width: 100%;
+	 display: block;
+	 border-right: none;
+}
  @media only screen and (max-width:600px) {
 	 .popup-modal {
 		 width: auto;
