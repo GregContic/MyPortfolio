@@ -118,7 +118,7 @@
 	/*----------------------------------------------------*/
 	/*	Modal Popup
 	------------------------------------------------------*/
-   $('.item-wrap a').magnificPopup({
+	$('.item-wrap a, a.overlay').magnificPopup({
 
       type:'inline',
       fixedContentPos: false,
@@ -138,26 +138,30 @@
   	/* Navigation Menu
    ------------------------------------------------------ */  
    var toggleButton = $('.menu-toggle'),
-       nav = $('.main-navigation');
+	   nav = $('#main-nav-wrap');
 
    // toggle button
    toggleButton.on('click', function(e) {
 
 		e.preventDefault();
-		toggleButton.toggleClass('is-clicked');
-		nav.slideToggle();
+		var isClicked = toggleButton.toggleClass('is-clicked').hasClass('is-clicked');
+		// slide the existing .main-navigation if present
+		nav.toggleClass('open');
+		nav.find('.main-navigation').stop(true, true).slideToggle();
+		// accessibility
+		toggleButton.attr('aria-expanded', isClicked ? 'true' : 'false');
 
 	});
 
    // nav items
-  	nav.find('li a').on("click", function() {   
+   	nav.find('li a').on("click", function() {    
 
-   	// update the toggle button 		
-   	toggleButton.toggleClass('is-clicked'); 
-   	// fadeout the navigation panel
-   	nav.fadeOut();   		
-   	     
-  	});
+	// update the toggle button 		
+	toggleButton.removeClass('is-clicked').attr('aria-expanded', 'false'); 
+	// hide the navigation panel
+	nav.removeClass('open').find('.main-navigation').fadeOut();    		 
+    	 
+   	});
 
 
    /*---------------------------------------------------- */
@@ -287,5 +291,16 @@
 		}		
 
 	});		
+
+	// Header shrink on scroll
+	var header = $('.site-header');
+	var shrinkPx = 60;
+	jQuery(window).on('scroll', function() {
+		if (jQuery(window).scrollTop() > shrinkPx) {
+			header.addClass('shrink');
+		} else {
+			header.removeClass('shrink');
+		}
+	});
 
 })(jQuery);
