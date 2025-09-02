@@ -2036,8 +2036,9 @@
 	height: 100%;
 	color: #e6e6e6;
 	display: block;
- #portfolio .folio-item-cell {
-	/* use transform for smooth, hardware-accelerated slide */
+}
+#portfolio .folio-item-cell {
+	/* glassy transparent overlay for slide-in */
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -2047,39 +2048,56 @@
 	align-items: center;
 	justify-content: center;
 	text-align: center;
-	background: #b700ff;
-	-webkit-transition: transform 0.45s ease-in-out;
-	-moz-transition: transform 0.45s ease-in-out;
-	-o-transition: transform 0.45s ease-in-out;
-	transition: transform 0.45s ease-in-out;
+	/* translucent glass effect */
+	background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+	color: #ffffff;
+	backdrop-filter: blur(8px) saturate(120%);
+	-webkit-backdrop-filter: blur(8px) saturate(120%);
+	border: 1px solid rgba(255,255,255,0.06);
+	box-shadow: 0 8px 24px rgba(8,8,8,0.35);
+	-webkit-transition: transform 0.45s ease-in-out, opacity 0.45s ease-in-out;
+	-moz-transition: transform 0.45s ease-in-out, opacity 0.45s ease-in-out;
+	-o-transition: transform 0.45s ease-in-out, opacity 0.45s ease-in-out;
+	transition: transform 0.45s ease-in-out, opacity 0.45s ease-in-out;
 	transform: translateX(-100%);
- }
- 
- #portfolio .folio-title {
-	 color: #FFFFFF;
+	opacity: 0.98;
+}
+
+#portfolio .folio-title {
+	color: #FFFFFF;
 	color: #0f0f0f;
 	font-size: 1.1rem;
 	 margin-bottom: 0;
 	background: #b700ff;
- #portfolio .folio-types {
-	 margin: 0;
-	 padding: 0;
-	 text-transform: uppercase;
-	 font-family: "poppins-regular", sans-serif;
-	 font-size: 1.2rem;
-	 letter-spacing: .1rem;
-	 color: rgba(255, 255, 255, 0.6);
-	border-right: 5px solid transparent;
-	border-left: 5px solid transparent;
-	border-top: 5px solid #b700ff;
- }
+}
+#portfolio .folio-item-cell .folio-title {
+	color: #ffffff;
+	font-size: 1.2rem;
+	font-weight: 700;
+	letter-spacing: 0.02rem;
+	margin: 0;
+	padding: 0.35rem 0.9rem;
+	background: rgba(183, 0, 255, 0.14); /* subtle tinted pill to read against background */
+	border-radius: 3px;
+	display: inline-block;
+	text-shadow: 0 2px 6px rgba(0,0,0,0.45);
+}
+#portfolio .folio-item-cell .folio-types {
+	color: rgba(255,255,255,0.92);
+	font-family: "poppins-bold", sans-serif;
+	font-size: 0.95rem;
+	letter-spacing: .08rem;
+	margin-left: 0.9rem;
+	display: inline-block;
+	vertical-align: middle;
+}
  #portfolio .folio-item:hover .folio-item-cell {
 	transform: translateX(0);
  }
  #portfolio .folio-item:hover img {
-	 -webkit-transform: scale(1.05);
-	 -ms-transform: scale(1.05);
-	 transform: scale(1.05);
+	-webkit-transform: scale(1.05);
+	-ms-transform: scale(1.05);
+	transform: scale(1.05);
  }
  
  /**
@@ -2706,12 +2724,12 @@
 }
 
 
-/** 
- * ===================================================================
- * 18. footer - (_layout.scss)
- *
- * ------------------------------------------------------------------- 
- */
+ /** 
+  * ===================================================================
+  * 18. footer - (_layout.scss)
+  *
+  * ------------------------------------------------------------------- 
+  */
 footer {
 	padding-bottom: 3rem;
 	font-size: 1.4rem;
