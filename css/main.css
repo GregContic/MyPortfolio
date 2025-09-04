@@ -1033,26 +1033,36 @@
 	 content: "";
  }
  
- .skill-bars li .percent5   { width: 5%; }
- .skill-bars li .percent10  { width: 10%; }
- .skill-bars li .percent15  { width: 15%; }
- .skill-bars li .percent20  { width: 20%; }
- .skill-bars li .percent25  { width: 25%; }
- .skill-bars li .percent30  { width: 30%; }
- .skill-bars li .percent35  { width: 35%; }
- .skill-bars li .percent40  { width: 40%; }
- .skill-bars li .percent45  { width: 45%; }
- .skill-bars li .percent50  { width: 50%; }
- .skill-bars li .percent55  { width: 55%; }
- .skill-bars li .percent60  { width: 60%; }
- .skill-bars li .percent65  { width: 65%; }
- .skill-bars li .percent70  { width: 70%; }
- .skill-bars li .percent75  { width: 75%; }
- .skill-bars li .percent80  { width: 80%; }
- .skill-bars li .percent85  { width: 85%; }
- .skill-bars li .percent90  { width: 90%; }
- .skill-bars li .percent95  { width: 95%; }
- .skill-bars li .percent100 { width: 100%; }
+.skill-bars li .percent5   { --target: 5%; }
+.skill-bars li .percent10  { --target: 10%; }
+.skill-bars li .percent15  { --target: 15%; }
+.skill-bars li .percent20  { --target: 20%; }
+.skill-bars li .percent25  { --target: 25%; }
+.skill-bars li .percent30  { --target: 30%; }
+.skill-bars li .percent35  { --target: 35%; }
+.skill-bars li .percent40  { --target: 40%; }
+.skill-bars li .percent45  { --target: 45%; }
+.skill-bars li .percent50  { --target: 50%; }
+.skill-bars li .percent55  { --target: 55%; }
+.skill-bars li .percent60  { --target: 60%; }
+.skill-bars li .percent65  { --target: 65%; }
+.skill-bars li .percent70  { --target: 70%; }
+.skill-bars li .percent75  { --target: 75%; }
+.skill-bars li .percent80  { --target: 80%; }
+.skill-bars li .percent85  { --target: 85%; }
+.skill-bars li .percent90  { --target: 90%; }
+.skill-bars li .percent95  { --target: 95%; }
+.skill-bars li .percent100 { --target: 100%; }
+
+/* Animated loading bar: default empty, animate to --target when .skill-bars.has-fill is added */
+.skill-bars li .progress {
+	width: 0;
+	transition: width 1200ms cubic-bezier(.2,.8,.2,1);
+	background: linear-gradient(90deg, #b700ff 0%, #7a00ff 100%);
+}
+.skill-bars.has-fill li .progress {
+	width: var(--target, 0%);
+}
  
  
  /** 

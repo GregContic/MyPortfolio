@@ -315,12 +315,17 @@
 
 		var io = new IntersectionObserver(function(entries){
 			entries.forEach(function(entry){
+				var el = entry.target;
+				var delay = el.getAttribute('data-anim-delay');
 				if(entry.isIntersecting){
-					var el = entry.target;
-					var delay = el.getAttribute('data-anim-delay');
+					// when entering viewport, apply delay (if any) and make visible
 					if(delay) el.style.transitionDelay = delay;
 					el.classList.add('is-visible');
-					io.unobserve(el);
+				} else {
+					// remove visibility when element leaves so animation can replay
+					el.classList.remove('is-visible');
+					// clear inline delay so re-entry picks up any new delay attribute
+					if(delay) el.style.transitionDelay = '';
 				}
 			});
 		},{
@@ -383,4 +388,63 @@
 	// hide native scrollbar and prevent pointer-driven scrolling
 	container.style.overflowX = 'hidden';
 
+})();
+
+/* Trigger skill-bars fill when About section is visible */
+(function(){
+	// Replay-capable skill-bar fill. Adds/removes `.has-fill` when #about
+	// enters/exits the viewport so the animation can replay, and also
+	// injects a small "Replay" button to manually restart the animation.
+
+	var sb = document.querySelector('.skill-bars');
+	var about = document.getElementById('about');
+	if(!sb || !about) {
+		// If either element is missing, try graceful fallback: add class once
+		if(sb) sb.classList.add('has-fill');
+		return;
+	}
+
+	function addFill(){ sb.classList.add('has-fill'); }
+	function removeFill(){ sb.classList.remove('has-fill'); }
+	function replayFill(){
+		// restart CSS animation by removing and re-adding the class
+		removeFill();
+		// force layout so the subsequent add restarts the transition
+		// eslint-disable-next-line no-unused-expressions
+		void sb.offsetWidth;
+		addFill();
+	}
+
+	// Inject a small accessible Replay button (if not already present)
+	try{
+		var parent = document.getElementById('skills-tools') || about;
+		if(parent && !parent.querySelector('.skills-replay-btn')){
+			var btn = document.createElement('button');
+			btn.className = 'skills-replay-btn';
+			btn.setAttribute('aria-label','Replay skill bars animation');
+			btn.type = 'button';
+			btn.textContent = 'Replay';
+			btn.addEventListener('click', replayFill);
+			parent.appendChild(btn);
+		}
+	}catch(e){ /* non-fatal - continue without button */ }
+
+	if(!('IntersectionObserver' in window)){
+		// fallback: add immediately
+		addFill();
+		return;
+	}
+
+	var io = new IntersectionObserver(function(entries){
+		entries.forEach(function(entry){
+			if(entry.isIntersecting){
+				addFill();
+			} else {
+				// remove so the animation can run again when re-entering
+				removeFill();
+			}
+		});
+	}, { root: null, threshold: 0.25 });
+
+	io.observe(about);
 })();
