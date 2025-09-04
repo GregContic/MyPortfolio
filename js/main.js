@@ -303,4 +303,84 @@
 		}
 	});
 
+
+	/*---------------------------------------------------- */
+	/* Scroll reveal (IntersectionObserver)
+	/* Add class `animate` to elements you want animated on scroll
+	   optional attributes: data-anim-type="fade-up|fade-left|fade-right|zoom-in"
+	                        data-anim-delay="0.12s" (CSS-compatible)
+	------------------------------------------------------ */
+	(function(){
+		if(!('IntersectionObserver' in window)) return; // fallback: elements will remain visible
+
+		var io = new IntersectionObserver(function(entries){
+			entries.forEach(function(entry){
+				if(entry.isIntersecting){
+					var el = entry.target;
+					var delay = el.getAttribute('data-anim-delay');
+					if(delay) el.style.transitionDelay = delay;
+					el.classList.add('is-visible');
+					io.unobserve(el);
+				}
+			});
+		},{
+			root: null,
+			rootMargin: '0px 0px -8% 0px',
+			threshold: 0.08
+		});
+
+		// auto-bind common elements
+		var items = document.querySelectorAll('section, .row, .item-wrap, .popup-modal, header, footer, .intro-content');
+		items.forEach(function(node){
+			// avoid double-wrapping: if already animated, keep type
+			if(!node.classList.contains('animate')) node.classList.add('animate', 'animate--fade-up');
+			io.observe(node);
+		});
+
+	})();
+
 })(jQuery);
+
+/* Skills carousel initializer (runs after DOM ready handlers above) */
+(function(){
+	// guard
+	if(typeof document === 'undefined') return;
+
+	var container = document.querySelector('#skills-tools .row.about-content');
+	if(!container) return;
+
+	// create controls
+	var prev = document.createElement('button');
+	prev.className = 'skills-carousel-btn skills-prev';
+	prev.setAttribute('aria-label','Previous');
+	prev.innerHTML = '&#9664;';
+
+	var next = document.createElement('button');
+	next.className = 'skills-carousel-btn skills-next';
+	next.setAttribute('aria-label','Next');
+	next.innerHTML = '&#9654;';
+
+	// attach to parent
+	var parent = document.getElementById('skills-tools');
+	if(parent) {
+		parent.appendChild(prev);
+		parent.appendChild(next);
+	}
+
+	// helper to scroll by one card
+	function scrollByCard(direction){
+		var card = container.querySelector('.skill-card');
+		if(!card) return;
+		var gap = parseInt(getComputedStyle(container).gap) || 24;
+		var scrollAmount = card.getBoundingClientRect().width + gap;
+		container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+	}
+
+	prev.addEventListener('click', function(){ scrollByCard(-1); });
+	next.addEventListener('click', function(){ scrollByCard(1); });
+
+	// Disable native pointer/wheel/keyboard navigation so only buttons work
+	// hide native scrollbar and prevent pointer-driven scrolling
+	container.style.overflowX = 'hidden';
+
+})();

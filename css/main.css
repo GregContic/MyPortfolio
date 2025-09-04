@@ -2055,10 +2055,10 @@
 	-webkit-backdrop-filter: blur(8px) saturate(120%);
 	border: 1px solid rgba(255,255,255,0.06);
 	box-shadow: 0 8px 24px rgba(8,8,8,0.35);
-	-webkit-transition: transform 0.45s ease-in-out, opacity 0.45s ease-in-out;
-	-moz-transition: transform 0.45s ease-in-out, opacity 0.45s ease-in-out;
-	-o-transition: transform 0.45s ease-in-out, opacity 0.45s ease-in-out;
-	transition: transform 0.45s ease-in-out, opacity 0.45s ease-in-out;
+	-webkit-transition: transform 0.9s ease-in-out, opacity 0.9s ease-in-out;
+	-moz-transition: transform 0.9s ease-in-out, opacity 0.9s ease-in-out;
+	-o-transition: transform 0.9s ease-in-out, opacity 0.9s ease-in-out;
+	transition: transform 0.9s ease-in-out, opacity 0.9s ease-in-out;
 	transform: translateX(-100%);
 	opacity: 0.98;
 }
@@ -2500,7 +2500,7 @@
  #contact .section-intro h5 {
 	 color: #b700ff;
  }
- #contact .section-intro p {
+ #contact .section-intro h2 {
 	 color: rgba(255, 255, 255, 0.7);
  }
  
@@ -2850,4 +2850,235 @@ footer .copyright span:last-child::after {
 	border-bottom: 1px solid rgba(255,255,255,0.04);
 }
 
-/*# sourceMappingURL=main.css.map */
+/* Scroll reveal animations */
+.animate {
+	opacity: 0;
+	transform: translateY(18px);
+	transition: opacity 900ms cubic-bezier(.2,.8,.2,1), transform 900ms cubic-bezier(.2,.8,.2,1);
+	will-change: opacity, transform;
+}
+.animate.is-visible {
+	opacity: 1;
+	transform: none;
+}
+
+/* Variations */
+.animate--fade-up { transform: translateY(22px); }
+.animate--fade-left { transform: translateX(-22px); }
+.animate--fade-right { transform: translateX(22px); }
+.animate--zoom-in { transform: scale(.96); opacity: 0; }
+.animate--zoom-in.is-visible { transform: none; opacity: 1; }
+
+/* small utility for stagger children (useful when used on groups) */
+[data-anim-delay] { transition-delay: 0s; }
+
+/* Ensure animations don't interfere with pointer events on overlays */
+#portfolio .folio-item .folio-item-cell.animate { pointer-events: auto; }
+
+/* Global light text for dark theme */
+body, body * {
+	color: #f5f5f7 !important;
+}
+/* Exceptions: keep black where backgrounds are light (modals, forms) */
+.popup-modal, .popup-modal * , .description-box, .popup-modal .categories {
+	color: initial !important;
+}
+/* Buttons/links should remain visible */
+a, a:visited { color: #b700ff !important; }
+
+/* Remove accidental dark text in portfolio title rule */
+#portfolio .folio-title, #portfolio .folio-item-cell .folio-title { color: #ffffff !important; }
+
+/* Enhanced skills list: icons + small muted descriptions (per-item glass cards) */
+.enhanced-skills { list-style: none; margin: 0; padding: 0; }
+.enhanced-skills li {
+	display: flex;
+	flex-direction: column; /* stack icon, title and description inside the box */
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	padding: 18px 16px;
+	margin-bottom: 14px;
+	/* translucent glass card per skill */
+	background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.02));
+	-webkit-backdrop-filter: blur(8px) saturate(120%);
+	backdrop-filter: blur(6px) saturate(120%);
+	border: 1px solid rgba(255,255,255,0.06);
+	border-radius: 10px;
+	box-shadow: 0 8px 22px rgba(8,8,8,0.35);
+	text-align: center;
+}
+.enhanced-skills li:last-child { margin-bottom: 0; }
+.enhanced-skills i { color: #b700ff; font-size: 1.8rem; width: 56px; height: 56px; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px; background: rgba(0,0,0,0.08); }
+.enhanced-skills .skill-text { display: block; }
+.enhanced-skills strong { display: block; font-size: 1.25rem; margin-top: 6px; color: #ffffff; line-height: 1.15; }
+.enhanced-skills .muted { margin: 0; color: rgba(245,245,247,0.90); font-size: 0.95rem; line-height: 1.45; max-width: 220px; }
+
+@media (max-width: 768px) {
+	.enhanced-skills li { gap: 10px; padding: 12px; margin-bottom: 10px; }
+	.enhanced-skills i { font-size: 1.4rem; width: 46px; height: 46px; }
+	.enhanced-skills strong { font-size: 1.05rem; }
+	.enhanced-skills .muted { font-size: 0.95rem; }
+}
+
+/* Card wrapper for grouped skill categories (e.g. Adobe) */
+.skill-card {
+	background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+	-webkit-backdrop-filter: blur(8px) saturate(120%);
+	backdrop-filter: blur(6px) saturate(120%);
+	border-radius: 12px;
+	padding: 18px;
+	box-shadow: 0 10px 30px rgba(8,8,8,0.45);
+	position: relative;
+	/* subtle inner border left as part of glass effect */
+	overflow: visible;
+}
+.skill-card .enhanced-skills li { margin-bottom: 10px; }
+.skill-card .enhanced-skills li:last-child { margin-bottom: 0; }
+
+/* Purple outline and glow via pseudo-element */
+.skill-card::after {
+	content: "";
+	pointer-events: none;
+	position: absolute;
+	inset: -4px; /* outline sits slightly outside the card */
+	border-radius: 16px;
+	border: 2px solid rgba(183,0,255,0.28); /* stronger purple outline */
+	box-shadow: 0 12px 40px rgba(183,0,255,0.16), 0 0 18px rgba(183,0,255,0.10), 0 1px 0 rgba(183,0,255,0.04) inset;
+	transition: box-shadow 220ms ease, transform 220ms ease, opacity 220ms ease;
+	opacity: 1;
+}
+
+.skill-card:hover::after {
+	box-shadow: 0 18px 64px rgba(183,0,255,0.28), 0 0 40px rgba(183,0,255,0.18), 0 1px 0 rgba(183,0,255,0.06) inset;
+	transform: translateY(-3px);
+}
+
+/* Subtle flowing sheen behind the outline to give a liquid/glow effect.
+   We use a ::before layer so the ::after outline remains visible. */
+.skill-card::before {
+	content: "";
+	pointer-events: none;
+	position: absolute;
+	inset: -8px;
+	border-radius: 18px;
+	z-index: -1;
+	background: linear-gradient(90deg, rgba(255,255,255,0.00) 0%, rgba(255,255,255,0.04) 40%, rgba(255,255,255,0.00) 60%);
+	opacity: 0.18;
+	transform: translateX(-20%);
+	filter: blur(8px);
+	mix-blend-mode: screen;
+	transition: opacity 220ms ease, transform 6000ms linear;
+	animation: flow-sheen 6s linear infinite;
+}
+
+/* Alternate outline and sheen colors for odd/even cards */
+.skill-card:nth-child(odd)::after {
+	border-color: rgba(183,0,255,0.38);
+	box-shadow: 0 14px 50px rgba(183,0,255,0.22), 0 0 28px rgba(183,0,255,0.12), 0 1px 0 rgba(183,0,255,0.06) inset;
+}
+.skill-card:nth-child(odd)::before {
+	background: linear-gradient(90deg, rgba(183,0,255,0.00) 0%, rgba(183,0,255,0.10) 40%, rgba(183,0,255,0.00) 70%);
+	opacity: 0.18;
+}
+
+.skill-card:nth-child(even)::after {
+	border-color: rgba(255,255,255,0.32);
+	box-shadow: 0 14px 50px rgba(255,255,255,0.08), 0 0 24px rgba(255,255,255,0.06), 0 1px 0 rgba(255,255,255,0.02) inset;
+}
+.skill-card:nth-child(even)::before {
+	background: linear-gradient(90deg, rgba(255,255,255,0.00) 0%, rgba(255,255,255,0.16) 40%, rgba(255,255,255,0.00) 70%);
+	opacity: 0.12;
+}
+
+/* Slightly intensify sheen on hover */
+.skill-card:hover::before { opacity: 0.28; transform: translateX(10%); }
+
+@keyframes flow-sheen {
+	0% { transform: translateX(-30%); }
+	50% { transform: translateX(30%); }
+	100% { transform: translateX(-30%); }
+}
+
+/* Skills carousel: horizontal scrolling with snap and optional arrow controls */
+#skills-tools .row.about-content {
+	display: flex;
+	flex-wrap: nowrap; /* keep items in a single row for carousel */
+	gap: 28px;
+	justify-content: flex-start; /* left aligned inside the scroll area */
+	align-items: stretch; /* ensure equal height cards */
+	padding: 1.6rem 0;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+	scroll-snap-type: x mandatory;
+	scroll-behavior: smooth;
+}
+
+/* Make each category card a narrow fixed column so they line up in a row */
+#skills-tools .row.about-content .skill-card {
+	flex: 0 0 300px; /* wider fixed basis on desktop */
+	max-width: 300px;
+	scroll-snap-align: center;
+	display: flex;
+	flex-direction: column; /* stack header + list vertically */
+	/* fixed height so all cards match */
+	height: 380px;
+}
+
+/* ensure card header spacing */
+.skill-card > h4 {
+	margin: 0 0 10px 0;
+	font-size: 1.3rem;
+}
+
+/* make the skills list fill remaining card space and scroll if necessary */
+.skill-card .enhanced-skills {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	flex: 1 1 auto;
+	overflow: auto;
+	padding: 0;
+}
+
+.skill-card .enhanced-skills li { flex: 0 0 auto; }
+
+/* Responsive adjustments */
+@media (max-width: 960px) {
+	#skills-tools .row.about-content .skill-card { flex: 0 0 260px; max-width: 260px; height: 340px; }
+}
+@media (max-width: 640px) {
+	#skills-tools .row.about-content { gap: 18px; padding: 1rem 0; }
+	#skills-tools .row.about-content .skill-card { flex: 0 0 92%; max-width: 92%; height: auto; }
+}
+
+/* Hide native scrollbars gracefully */
+#skills-tools .row.about-content::-webkit-scrollbar { height: 10px; }
+#skills-tools .row.about-content::-webkit-scrollbar-track { background: transparent; }
+#skills-tools .row.about-content::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.06); border-radius: 10px; }
+#skills-tools .row.about-content { scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.06) transparent; }
+
+/* Arrow controls (injected by JS) */
+.skills-carousel-btn {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 44px;
+	height: 44px;
+	border-radius: 999px;
+	border: none;
+	background: rgba(0,0,0,0.45);
+	color: #fff;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 6px 20px rgba(0,0,0,0.45);
+	cursor: pointer;
+	z-index: 980;
+}
+.skills-carousel-btn:focus { outline: 2px solid rgba(183,0,255,0.28); }
+.skills-carousel-btn.skills-prev { left: 8px; }
+.skills-carousel-btn.skills-next { right: 8px; }
+
+/* Ensure the parent area is positioned for absolute buttons */
+#skills-tools { position: relative; }
