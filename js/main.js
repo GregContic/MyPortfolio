@@ -348,11 +348,13 @@
 
 /* Skills carousel initializer (runs after DOM ready handlers above) */
 (function(){
-	// guard
 	if(typeof document === 'undefined') return;
 
 	var container = document.querySelector('#skills-tools .row.about-content');
 	if(!container) return;
+
+	var cards = Array.prototype.slice.call(container.querySelectorAll('.skill-card'));
+	if(!cards.length) return;
 
 	// create controls
 	var prev = document.createElement('button');
@@ -372,21 +374,68 @@
 		parent.appendChild(next);
 	}
 
-	// helper to scroll by one card
-	function scrollByCard(direction){
-		var card = container.querySelector('.skill-card');
+	// ensure container doesn't allow pointer scroll (we control movement)
+	container.style.overflowX = 'hidden';
+
+	var current = 0;
+
+	function clamp(i){ return Math.max(0, Math.min(cards.length - 1, i)); }
+
+	function centerCard(index){
+		index = clamp(index);
+		var card = cards[index];
 		if(!card) return;
-		var gap = parseInt(getComputedStyle(container).gap) || 24;
-		var scrollAmount = card.getBoundingClientRect().width + gap;
-		container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+		// compute target scrollLeft so the card is centered in the container
+		var containerRect = container.getBoundingClientRect();
+		var cardRect = card.getBoundingClientRect();
+		// card.offsetLeft is relative to the container's content box
+		var target = card.offsetLeft + (cardRect.width / 2) - (container.clientWidth / 2);
+		// clamp target
+		target = Math.max(0, Math.min(target, container.scrollWidth - container.clientWidth));
+		container.scrollTo({ left: target, behavior: 'smooth' });
+		// update classes
+		current = index;
+		updateActiveClasses();
 	}
 
-	prev.addEventListener('click', function(){ scrollByCard(-1); });
-	next.addEventListener('click', function(){ scrollByCard(1); });
+	function updateActiveClasses(){
+		cards.forEach(function(c, i){
+			if(i === current){
+				c.classList.add('active');
+				c.classList.remove('inactive');
+				c.setAttribute('aria-hidden', 'false');
+			} else {
+				c.classList.remove('active');
+				c.classList.add('inactive');
+				c.setAttribute('aria-hidden', 'true');
+			}
+		});
+	}
 
-	// Disable native pointer/wheel/keyboard navigation so only buttons work
-	// hide native scrollbar and prevent pointer-driven scrolling
-	container.style.overflowX = 'hidden';
+	prev.addEventListener('click', function(){
+		centerCard(clamp(current - 1));
+	});
+	next.addEventListener('click', function(){
+		centerCard(clamp(current + 1));
+	});
+
+	// keyboard navigation (left/right)
+	prev.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); centerCard(current - 1); } });
+	next.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); centerCard(current + 1); } });
+
+	document.addEventListener('keydown', function(e){
+		if(e.key === 'ArrowLeft') centerCard(current - 1);
+		if(e.key === 'ArrowRight') centerCard(current + 1);
+	});
+
+	// allow clicking a card to center it
+	cards.forEach(function(c, i){
+		c.style.cursor = 'pointer';
+		c.addEventListener('click', function(){ centerCard(i); });
+	});
+
+	// set initial position: center the first card after a short delay so layout settles
+	window.setTimeout(function(){ centerCard(0); }, 60);
 
 })();
 
@@ -415,19 +464,7 @@
 		addFill();
 	}
 
-	// Inject a small accessible Replay button (if not already present)
-	try{
-		var parent = document.getElementById('skills-tools') || about;
-		if(parent && !parent.querySelector('.skills-replay-btn')){
-			var btn = document.createElement('button');
-			btn.className = 'skills-replay-btn';
-			btn.setAttribute('aria-label','Replay skill bars animation');
-			btn.type = 'button';
-			btn.textContent = 'Replay';
-			btn.addEventListener('click', replayFill);
-			parent.appendChild(btn);
-		}
-	}catch(e){ /* non-fatal - continue without button */ }
+	// Replay button injection removed — keep replayFill() available for manual calls.
 
 	if(!('IntersectionObserver' in window)){
 		// fallback: add immediately

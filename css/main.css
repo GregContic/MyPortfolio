@@ -2109,6 +2109,37 @@
 	-ms-transform: scale(1.05);
 	transform: scale(1.05);
  }
+
+/* Hover indicator: subtle pulsing dot at bottom-right of poster */
+.item-wrap {
+	position: relative; /* allow pseudo-element positioning */
+}
+.item-wrap::after {
+	content: '';
+	position: absolute;
+	right: 14px;
+	bottom: 14px;
+	width: 14px;
+	height: 14px;
+	border-radius: 50%;
+	background: rgba(183,0,255,0.95);
+	box-shadow: 0 0 0 0 rgba(183,0,255,0.25);
+	opacity: 0; /* hidden by default */
+	transform: scale(.6);
+	transition: opacity 220ms ease, transform 220ms cubic-bezier(.2,.9,.2,1);
+	pointer-events: none;
+}
+.item-wrap:hover::after {
+	opacity: 1;
+	transform: scale(1);
+	animation: pulseRing 1.6s infinite cubic-bezier(.2,.9,.2,1);
+}
+
+@keyframes pulseRing {
+	0% { box-shadow: 0 0 0 0 rgba(183,0,255,0.22); }
+	50% { box-shadow: 0 0 0 10px rgba(183,0,255,0.06); }
+	100% { box-shadow: 0 0 0 0 rgba(183,0,255,0.00); }
+}
  
  /**
   * responsive:
@@ -3092,3 +3123,34 @@ a, a:visited { color: #b700ff !important; }
 
 /* Ensure the parent area is positioned for absolute buttons */
 #skills-tools { position: relative; }
+
+/* Active/inactive card visual states */
+#skills-tools .row.about-content .skill-card {
+	transition: transform 420ms cubic-bezier(.2,.9,.2,1),
+				filter 420ms cubic-bezier(.2,.9,.2,1),
+				opacity 420ms cubic-bezier(.2,.9,.2,1),
+				box-shadow 420ms cubic-bezier(.2,.9,.2,1);
+	will-change: transform, filter, opacity;
+}
+
+#skills-tools .row.about-content .skill-card.inactive {
+	transform: scale(0.96);
+	filter: blur(4px) saturate(.85) brightness(.92);
+	opacity: 0.55;
+	pointer-events: none; /* prevent accidental interactions */
+}
+
+#skills-tools .row.about-content .skill-card.active {
+	transform: scale(1.03) translateZ(0);
+	filter: none;
+	opacity: 1;
+	pointer-events: auto;
+	box-shadow: 0 20px 50px rgba(0,0,0,0.55);
+	z-index: 5; /* ensure it lays above neighbors */
+}
+
+/* Reduce visual noise on small screens: disable blur and scaling for narrow viewports */
+@media (max-width: 640px) {
+	#skills-tools .row.about-content .skill-card.inactive { filter: none; transform: none; opacity: 0.95; pointer-events: auto; }
+	#skills-tools .row.about-content .skill-card.active { transform: none; box-shadow: none; }
+}
