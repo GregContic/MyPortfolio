@@ -2186,6 +2186,10 @@
 	 font-size: 1.5rem;
 	 line-height: 2.4rem;
 	 margin-bottom: .6rem;
+	 color: #313131;
+ }
+ .popup-modal .description-box p {
+	 color: #5a5a5a;
  }
 .popup-modal .link-box {
 	width: 100%;
@@ -2920,7 +2924,7 @@ body, body * {
 }
 /* Exceptions: keep black where backgrounds are light (modals, forms) */
 .popup-modal, .popup-modal * , .description-box, .popup-modal .categories {
-	color: initial !important;
+	color: #313131 !important;
 }
 /* Buttons/links should remain visible */
 a, a:visited { color: #b700ff !important; }
