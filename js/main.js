@@ -104,6 +104,7 @@
 	/*	Masonry
 	------------------------------------------------------ */
 	var containerProjects = $('#folio-wrapper');
+	var containerCerts = $('#cert-wrapper');
 
 	containerProjects.imagesLoaded( function() {
 
@@ -114,11 +115,20 @@
 
 	});
 
+	containerCerts.imagesLoaded( function() {
+
+		containerCerts.masonry( {		  
+		  	itemSelector: '.cert-item',
+		  	resize: true 
+		});
+
+	});
+
 
 	/*----------------------------------------------------*/
 	/*	Modal Popup
 	------------------------------------------------------*/
-	$('.item-wrap a, a.overlay').magnificPopup({
+	$('.item-wrap a, .cert-wrap a, a.overlay').magnificPopup({
 
       type:'inline',
       fixedContentPos: false,
