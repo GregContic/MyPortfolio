@@ -495,3 +495,64 @@
 
 	io.observe(about);
 })();
+
+/* Certificate Show More/Less Toggle */
+(function(){
+	var toggleBtn = document.getElementById('cert-toggle-btn');
+	var hiddenCerts = document.querySelectorAll('.cert-item.hidden-cert');
+	var certWrapper = document.getElementById('cert-wrapper');
+	var isExpanded = false;
+
+	if(!toggleBtn || !hiddenCerts.length) return;
+
+	toggleBtn.addEventListener('click', function(){
+		isExpanded = !isExpanded;
+
+		if(isExpanded){
+			// Show all certificates with drawer opening effect
+			hiddenCerts.forEach(function(cert){
+				cert.classList.add('show-cert');
+			});
+
+			// Update button text and icon
+			toggleBtn.innerHTML = 'Show Less <i class="fa fa-chevron-up"></i>';
+			toggleBtn.classList.add('expanded');
+
+			// Re-trigger Masonry layout after animation completes
+			setTimeout(function(){
+				if($(certWrapper).data('masonry')){
+					$(certWrapper).masonry('reloadItems');
+					$(certWrapper).masonry('layout');
+				}
+			}, 700);
+
+		} else {
+			// Hide certificates with drawer closing effect
+			hiddenCerts.forEach(function(cert){
+				cert.classList.remove('show-cert');
+			});
+
+			// Update button text and icon
+			toggleBtn.innerHTML = 'Show More <i class="fa fa-chevron-down"></i>';
+			toggleBtn.classList.remove('expanded');
+
+			// Scroll to certifications section smoothly
+			setTimeout(function(){
+				var certSection = document.getElementById('certifications');
+				if(certSection){
+					var yOffset = -100; // offset for fixed header
+					var y = certSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+					window.scrollTo({top: y, behavior: 'smooth'});
+				}
+			}, 200);
+
+			// Re-trigger Masonry layout after animation completes
+			setTimeout(function(){
+				if($(certWrapper).data('masonry')){
+					$(certWrapper).masonry('reloadItems');
+					$(certWrapper).masonry('layout');
+				}
+			}, 600);
+		}
+	});
+})();
