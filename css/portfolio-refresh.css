@@ -94,3 +94,4 @@ html{scroll-behavior:smooth}
 @keyframes motion-project-image{from{opacity:0;transform:translate3d(0,20px,0) scale(1.04)}to{opacity:.82;transform:translate3d(0,var(--scroll-y),0) scale(var(--hover-scale))}}
 @media(max-width:767px){.hero-copy{transform:none}.hero-aside{transform:none}}
 @media(prefers-reduced-motion:reduce){.scroll-progress{transform:none}.hero-copy,.hero-aside,.project-card .project-visual img,.project-card .project-info{transform:none!important;transition:none}.motion-ready .project-card.motion-item.is-visible .project-visual img{animation:none;opacity:.82}.main-nav a.is-section-active:not(.nav-resume):after{transition:none}}
+.about-image{align-self:start;height:max-content}.about-image img{height:auto;object-fit:contain}
