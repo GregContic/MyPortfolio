@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gregcontic.github.io/MyPortfolio/sitemap.xml
