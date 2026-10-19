@@ -32,11 +32,12 @@
 .filter-button{background:transparent;border:1px solid #455450;color:#d5ded9;cursor:pointer;font-family:var(--display);font-size:1.2rem;padding:.8rem 1.2rem;transition:background .25s ease,color .25s ease,border-color .25s ease}
 .filter-button:hover,.filter-button.is-active{background:var(--coral);border-color:var(--coral);color:var(--ink)}
 .filter-status{color:#aeb9b4;font-family:var(--serif);font-size:1.45rem;margin:0 0 3rem}
-.archive-grid{display:grid;gap:3rem;grid-template-columns:repeat(2,minmax(0,1fr))}
-.archive-card.project-card,.archive-card.project-card.project-reverse{align-items:stretch;display:flex;flex-direction:column;gap:0;min-width:0}
-.archive-card .project-visual,.archive-card .project-visual img{aspect-ratio:16/10;min-height:0}
-.archive-card .project-visual{flex:0 0 auto;width:100%}
-.archive-card .project-info{background:#202d2b;display:flex;flex:0 0 auto;flex-direction:column;min-width:0;padding:2.5rem;width:100%}
+.archive-grid{align-items:stretch;display:grid;gap:3rem;grid-template-columns:repeat(2,minmax(0,1fr))}
+.archive-card.project-card,.archive-card.project-card.project-reverse{align-items:stretch;display:flex;flex-direction:column;gap:0;height:100%;min-width:0}
+.archive-card .project-visual,.archive-card .project-visual img{height:clamp(200px,20vw,280px);min-height:0}
+.archive-card .project-visual{flex:0 0 auto;overflow:hidden;width:100%}
+.archive-card .project-visual img{object-fit:cover;object-position:center;width:100%}
+.archive-card .project-info{background:#202d2b;display:flex;flex:1 1 auto;flex-direction:column;min-width:0;padding:2.5rem;width:100%}
 .archive-card .project-info h3{font-size:clamp(2.5rem,3vw,3.8rem)}
 .archive-card .project-info>p:not(.project-kicker){font-size:1.55rem}
 .archive-card .tag-list{margin-top:auto;padding-top:1rem}
